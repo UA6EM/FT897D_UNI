@@ -50,13 +50,13 @@ void setup() {
 void loop() {
   
   ftFreq = Radio.GetFrequency();
-  Serial.print("Freq = ");
+  Serial.print(" Freq   = ");
   Serial.println(ftFreq);
   
   TTX_Status tx_status = Radio.ReadTXStatus();
   Serial.print(" Power  = ");
   Serial.println(tx_status.PowerValue);
-  Serial.print(" Split    ");
+  Serial.print(" Split  = ");
     if(tx_status.Split){
     Serial.println("OFF");
     }else{
@@ -75,7 +75,7 @@ void loop() {
     Serial.println("OFF");}
   
   TRX_Status rx_status = Radio.ReadRXStatus();
-  Serial.print(" S-Metr   = ");
+  Serial.print(" S-Metr    = ");
   Serial.println(rx_status.SMValue);
   Serial.print(" DISCRIM   = ");
     if(!rx_status.Discr){
