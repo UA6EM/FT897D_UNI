@@ -17,6 +17,29 @@ uniFT897D Radio(RadioPort);
 
 float ftFreq;
 
+
+void ModeToSerial(const TOperatingMode AMode) {
+  switch (AMode)
+  {
+    case TOperatingMode::AM:
+      Serial.println("AM");
+      break;
+
+    case TOperatingMode::CW:
+      Serial.println("CW");
+      break;
+//    .
+//    .
+//      .
+    case TOperatingMode::USB:
+      Serial.println("USB");
+      break;
+  default:
+    Serial.println("Unknown mode");
+    break;
+  }
+}
+
 void setup() {
   Serial.begin(115200);
   delay(250);
@@ -73,7 +96,20 @@ void loop() {
     Serial.println("ON");}
   Serial.println(); 
 
-  TOperatingMode ismode = Radio.GetOperatingMode();
-  
+  TOperatingMode trxmode = Radio.GetOperatingMode();
+
   delay(3000);
+
+// Управляем трансивером
+/* 
+  Radio.Init(9600);
+  Radio.SetMainFreq(14.25);
+  Radio.ToggleVFO();
+  Radio.SetRepeaterOffsetFreq(5.4321);
+  Radio.SetCLAR(ON);
+  Radio.SetCLARFreq(12.5);
+  Radio.SetDCSMode(TDCS_Mode::DCS_ENCODER_ON);
+  Radio.SetCTCSSToneFreq(88.0, 100.0);
+  Radio.SetDCSCode(50, 9500);
+  */
 }
