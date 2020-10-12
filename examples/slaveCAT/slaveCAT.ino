@@ -17,28 +17,46 @@ uniFT897D Radio(RadioPort);
 
 float ftFreq;
 
-
+// Разбора и вывода текщего режима работы трансивера
 void ModeToSerial(const TOperatingMode AMode) {
   switch (AMode)
   {
-    case TOperatingMode::AM:
-      Serial.println("AM");
+    case TOperatingMode::LSB:
+      Serial.println("LSB");
       break;
-
-    case TOperatingMode::CW:
-      Serial.println("CW");
-      break;
-//    .
-//    .
-//      .
     case TOperatingMode::USB:
       Serial.println("USB");
       break;
+    case TOperatingMode::CW:
+      Serial.println("CW");
+      break;    
+    case TOperatingMode::CWR:
+      Serial.println("CWR");    
+      break;
+    case TOperatingMode::AM:
+      Serial.println("AM");    
+      break;     
+    case TOperatingMode::FM:
+      Serial.println("FM");    
+      break;     
+    case TOperatingMode::DIG:
+      Serial.println("DIG");    
+      break;
+    case TOperatingMode::PKT:
+      Serial.println("PKT");    
+      break;     
+    case TOperatingMode::CWN:
+      Serial.println("CWN");
+      break;     
+    case TOperatingMode::FMN:
+      Serial.println("FMN");    
+      break;   
   default:
     Serial.println("Unknown mode");
     break;
   }
 }
+
 
 void setup() {
   Serial.begin(115200);
@@ -46,6 +64,7 @@ void setup() {
   Serial.println("Start...");
   Radio.Init(4800);
 }
+
 
 void loop() {
   
@@ -97,7 +116,8 @@ void loop() {
   Serial.println(); 
 
   TOperatingMode trxmode = Radio.GetOperatingMode();
-
+  ModeToSerial(trxmode);
+  
   delay(3000);
 
 // Управляем трансивером
