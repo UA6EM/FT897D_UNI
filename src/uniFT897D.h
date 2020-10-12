@@ -1,5 +1,4 @@
-// Не совсем трезвый аффтар DetSimen сентябрь 2020 
-//
+// Заимствовано у DetDimen и переработано UA6EM
 #pragma once
 
 #include <Arduino.h>
