@@ -34,22 +34,43 @@ void loop() {
   Serial.print(" Power  = ");
   Serial.println(tx_status.PowerValue);
   Serial.print(" Split    ");
-  Serial.println(tx_status.Split);
-  Serial.print(" SWR    = ");
-  Serial.println(tx_status.SWR);
+    if(tx_status.Split){
+    Serial.println("OFF");
+    }else{
+    Serial.println("ON");}
+
+  Serial.print(" HSWR   = ");
+    if(tx_status.SWR){
+    Serial.println("YES");
+    }else{
+    Serial.println("NO");}
+
   Serial.print(" PTT    = ");
-  Serial.println(tx_status.PTTis);
-  Serial.println();
+    if(tx_status.PTTis){
+    Serial.println("ON");
+    }else{
+    Serial.println("OFF");}
   
   TRX_Status rx_status = Radio.ReadRXStatus();
   Serial.print(" S-Metr   = ");
   Serial.println(rx_status.SMValue);
-  Serial.print(" DISCRIM  = ");
-  Serial.println(rx_status.Discr);
+  Serial.print(" DISCRIM   = ");
+    if(!rx_status.Discr){
+    Serial.println("OFF");
+    }else{
+    Serial.println("ON");}
+
   Serial.print(" DCS/CTCSS = ");
-  Serial.println(rx_status.Code);
+    if(!rx_status.Code){
+    Serial.println("OFF");
+    }else{
+    Serial.println("ON");}
+    
   Serial.print(" AF/SQL    = ");
-  Serial.println(rx_status.NR);
+    if(!rx_status.NR){
+    Serial.println("OFF");
+    }else{
+    Serial.println("ON");}
   Serial.println(); 
 
   TOperatingMode ismode = Radio.GetOperatingMode();
