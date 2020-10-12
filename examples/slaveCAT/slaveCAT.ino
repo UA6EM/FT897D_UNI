@@ -30,7 +30,29 @@ void loop() {
   Serial.print("Freq = ");
   Serial.println(ftFreq);
   
-// ModeToSerial();
+  TTX_Status tx_status = Radio.ReadTXStatus();
+  Serial.print(" Power  = ");
+  Serial.println(tx_status.PowerValue);
+  Serial.print(" Split    ");
+  Serial.println(tx_status.Split);
+  Serial.print(" SWR    = ");
+  Serial.println(tx_status.SWR);
+  Serial.print(" PTT    = ");
+  Serial.println(tx_status.PTTis);
+  Serial.println();
+  
+  TRX_Status rx_status = Radio.ReadRXStatus();
+  Serial.print(" S-Metr   = ");
+  Serial.println(rx_status.SMValue);
+  Serial.print(" DISCRIM  = ");
+  Serial.println(rx_status.Discr);
+  Serial.print(" DCS/CTCSS = ");
+  Serial.println(rx_status.Code);
+  Serial.print(" AF/SQL    = ");
+  Serial.println(rx_status.NR);
+  Serial.println(); 
 
+  TOperatingMode ismode = Radio.GetOperatingMode();
+  
   delay(3000);
 }
