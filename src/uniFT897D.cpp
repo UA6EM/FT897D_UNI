@@ -293,3 +293,4 @@ uniFT897D::uniFT897D(SomeSerial& ASerialPort) : FPort(ASerialPort)
 {
   ClearCmdBuffer();
 }
+
