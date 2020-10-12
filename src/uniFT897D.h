@@ -1,5 +1,4 @@
-// Заимствовано у DetDimen и чуток изменено UA6EM
-
+// Заимствовано у DetDimen и переработано UA6EM
 #pragma once
 
 #include <Arduino.h>
@@ -65,8 +64,8 @@ struct TTX_Status {
   uint8_t PowerValue  : 4;
   bool    unused    : 1;
   bool  Split   : 1;
-  bool  KSV     : 1;
-  bool  Tangenta  : 1;
+  bool  SWR     : 1;
+  bool  PTTis  : 1;
 };
 
 const uint8_t CMD_LOCK_ON = 0x00;   // блокировка вкл/выкл
