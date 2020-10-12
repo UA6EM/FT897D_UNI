@@ -1,4 +1,4 @@
-// Заимствовано у DetDimen и переработано UA6EM
+// Заимствовано у DetDimen и чуток изменено UA6EM
 
 #pragma once
 
